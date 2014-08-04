@@ -8,6 +8,7 @@ var Mongo = require('mongodb');
 var connect = require('../../app/lib/mongodb');
 
 var ipodObject = {name:'ipod nano', dimensions:{l:'3', w:'2', h:'5'}, weight:'100', color:'red', quantity:'6', msrp:'300', percentOff:'20'};
+
 describe('Item', function(){
   before(function(done){
     connect('commerce-test', function(){
@@ -15,8 +16,17 @@ describe('Item', function(){
     });
   });
   beforeEach( function(done){
-    global.mongodb.collection('items').remove(function(){
-      done();
+    Item.collection.remove(function(){
+      var ipod = new Item(ipodObject);
+      var chair = new Item({name:'chair', dimensions:{l:'24', w:'24', h:'36'}, weight:'5000', color:'orange', quantity:'3', msrp:'150', percentOff:'5'});
+      var kindle = new Item({name:'kindle', dimensions:{l:'6', w:'8', h:'2'}, weight:'800', color:'black', quantity:'100', msrp:'200', percentOff:'50'});
+      ipod.save(function(){
+        chair.save(function(){
+          kindle.save(function(){
+            done();
+          });
+        });
+      });
     });
   });
   describe('constructor', function(){
@@ -45,6 +55,14 @@ describe('Item', function(){
       var ipod = new Item(ipodObject);
       ipod.save( function(){
         expect(ipod._id).to.be.instanceof(Mongo.ObjectID);
+        done();
+      });
+    });
+  });
+  describe('.all', function(){
+    it('should return all items in database', function(done){
+      Item.all({}, function(items){
+        expect(items).to.have.length(3);
         done();
       });
     });

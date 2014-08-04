@@ -1,5 +1,7 @@
 'use strict';
 
+var _ = require('lodash');
+
 Object.defineProperty(Item, 'collection', {
   get: function(){
     return global.mongodb.collection('items');
@@ -24,4 +26,21 @@ Item.prototype.save = function(cb){
   Item.collection.save(this, cb);
 };
 
+Item.all = function(query, cb){
+  Item.collection.find(query).toArray( function( err, obj){
+    //loop thru obj to reproto
+    for( var i = 0; i < obj.length; i++){
+      obj[i] = reProto(obj[i]);
+    }
+    cb(obj);
+  });
+};
+
 module.exports = Item;
+
+
+// HELPER
+function reProto(item){
+  item = _.create(Item.prototype, item);
+  return item;
+}
