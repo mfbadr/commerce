@@ -78,7 +78,7 @@ describe('Item', function(){
     });
   });
   describe('.deleteById', function(){
-    it('should return one object', function(done){
+    it('should delete an object from database', function(done){
       Item.deleteById(ipod._id.toString(), function(){
         Item.all({}, function(items){
           expect(items).to.have.length(2);
