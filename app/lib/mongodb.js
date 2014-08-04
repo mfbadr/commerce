@@ -6,9 +6,8 @@ module.exports = function (name, cb){
   var url = 'mongodb://localhost/' + name;
   MongoClient.connect(url, function(err, db){
     global.mongodb = db;
-    
-    if(cb){cb();
-    }
+
+    if(cb){cb();}
 
     console.log('MongoDb Read:', name);
   });

@@ -1,13 +1,24 @@
 /* jshint expr: true */
-/* global describe, it */ 
+/* global describe, it, before, beforeEach */ 
 'use strict';
 
 var expect = require('chai').expect;
 var Item = require('../../app/models/item');
+var Mongo = require('mongodb');
+var connect = require('../../app/lib/mongodb');
 
 var ipodObject = {name:'ipod nano', dimensions:{l:'3', w:'2', h:'5'}, weight:'100', color:'red', quantity:'6', msrp:'300', percentOff:'20'};
-
 describe('Item', function(){
+  before(function(done){
+    connect('commerce-test', function(){
+      done();
+    });
+  });
+  beforeEach( function(done){
+    global.mongodb.collection('items').remove(function(){
+      done();
+    });
+  });
   describe('constructor', function(){
     it('should create an item with proper attributes', function(){
       var ipod = new Item(ipodObject);
@@ -27,6 +38,15 @@ describe('Item', function(){
     it('should return the cost (msrp - discount) of the item', function(){
       var ipod = new Item(ipodObject);
       expect(ipod.cost()).to.be.closeTo(240, 0.1);
+    });
+  });
+  describe('#save', function(){
+    it('should save an item using mongodb', function(done){
+      var ipod = new Item(ipodObject);
+      ipod.save( function(){
+        expect(ipod._id).to.be.instanceof(Mongo.ObjectID);
+        done();
+      });
     });
   });
 });
