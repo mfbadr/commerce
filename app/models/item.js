@@ -10,4 +10,8 @@ function Item(obj){
   this.percentOff = parseFloat(obj.percentOff);
 }
 
+Item.prototype.cost = function(){
+  return this.msrp - (this.msrp * (this.percentOff / 100));
+};
+
 module.exports = Item;
