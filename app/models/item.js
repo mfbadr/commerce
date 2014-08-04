@@ -1,5 +1,6 @@
 'use strict';
 
+var Mongo = require('mongodb');
 var _ = require('lodash');
 
 Object.defineProperty(Item, 'collection', {
@@ -35,6 +36,21 @@ Item.all = function(query, cb){
     cb(obj);
   });
 };
+
+Item.findById = function(id, cb){
+  id = (typeof id === 'string') ? Mongo.ObjectID(id) : id;
+  Item.collection.findOne({_id:id}, function(err, item){
+    cb(reProto(item));
+  });
+};
+
+Item.deleteById = function (id, cb){
+  id = (typeof id === 'string') ? Mongo.ObjectID(id) : id;
+  Item.collection.remove( {_id:id}, function(){
+    cb();
+  } );
+};
+
 
 module.exports = Item;
 
