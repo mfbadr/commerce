@@ -1,0 +1,26 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    title Add an Item
+  body
+    nav
+      ul
+        li: a(href="/") Home
+        li: a(href="/faq") FAQ
+        li: a(href="/about") About
+        li: a(href='/items/new') Add Item
+        li: a(href='/items') View Item
+    .items
+      each item in items
+        ul
+          li= item.name
+          li= item.dimensions.l
+          li= item.dimensions.w
+          li= item.dimensions.h
+          li= item.weight
+          li= item.quantity
+          li= item.msrp
+          li= item.percentOff
+          li= item.cost()
+

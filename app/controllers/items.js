@@ -2,6 +2,12 @@
 
 var Item = require('../models/item');
 
+exports.index = function(req, res){
+  Item.all({}, function(items){
+    res.render('items/index', {items:items});
+  });
+};
+
 exports.init = function(req, res){
   res.render('items/init');
 };
