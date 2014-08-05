@@ -17,6 +17,7 @@ module.exports = function(app, express){
   app.get('/items/new', items.init);
   app.post('/items', items.create);
   app.get('/items', items.index);
+  app.get('/items/:id', items.show);
 
   console.log('pipeline is GO!');
 };

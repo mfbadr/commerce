@@ -19,3 +19,8 @@ exports.create = function(req, res){
     res.redirect('/');
   });
 };
+exports.show = function(req, res){
+  Item.findById(req.params.id, function(item){
+    res.render('items/show', {item:item});
+  });
+};
