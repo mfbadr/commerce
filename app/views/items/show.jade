@@ -2,7 +2,7 @@ extends ../shared/template
 
 block content
   h2= item.name
-  .show
+  .show(style="background-color:#{item.color}")
     table
       tr
         th Name
@@ -12,7 +12,7 @@ block content
         th msrp
         th % off
         th cost
-      tr(style="background-color:#{item.color}")
+      tr
         td= item.name
         td= item.dimensions.l + 'x' + item.dimensions.w + 'x' + item.dimensions.h
         td= item.weight
