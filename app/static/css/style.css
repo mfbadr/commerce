@@ -1,0 +1,8 @@
+.itemstable table{
+  border-collapse: collapse;
+  width: 100%;
+}
+.itemstable, th, td{
+  border: 1px solid black;
+  
+}
