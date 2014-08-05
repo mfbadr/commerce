@@ -1,19 +1,6 @@
-doctype html
-html
-  head
-    meta(charset = 'utf-8')
-    title Commerce
-    link(rel="stylesheet" href='/css/style.css')
-  body
-    .header
-      h1 Inventory Manager
-      h2 Home
-      nav
-        ul
-          li: a(href="/") Home
-          li: a(href="/faq") FAQ
-          li: a(href="/about") About
-          li: a(href='/items/new') Add Item
-          li: a(href='/items') View Items
-    .index
-      p Welcome to Mikey's inventory manager!
+extends ../shared/template
+
+block content
+  h2 Home
+  .index
+    p Welcome to Mikey's inventory manager!

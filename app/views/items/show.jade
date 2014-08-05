@@ -1,39 +1,27 @@
-doctype html
-html
-  head
-    meta(charset='utf-8')
-    title View an Item
-    link(rel='stylesheet' href='/css/style.css')
-  body(style="background-color:#{item.color}")
-    .header
-      h1 Inventory Manager
-      h2= item.name
-      nav
-        ul
-          li: a(href="/") Home
-          li: a(href="/faq") FAQ
-          li: a(href="/about") About
-          li: a(href='/items/new') Add Item
-          li: a(href='/items') View Items
-    .show
-      table
-        tr
-          th Name
-          th Dimensions
-          th Weight
-          th Quantity
-          th msrp
-          th % off
-          th cost
-        tr(style="background-color:#{item.color}")
-          td= item.name
-          td= item.dimensions.l + 'x' + item.dimensions.w + 'x' + item.dimensions.h
-          td= item.weight
-          td= item.quantity
-          td= item.msrp
-          td= item.percentOff
-          td= item.cost()
-      form(method='post', action='/items/#{item._id}')
+extends ../shared/template
+
+block content
+  h2= item.name
+  .show
+    table
+      tr
+        th Name
+        th Dimensions
+        th Weight
+        th Quantity
+        th msrp
+        th % off
+        th cost
+      tr(style="background-color:#{item.color}")
+        td= item.name
+        td= item.dimensions.l + 'x' + item.dimensions.w + 'x' + item.dimensions.h
+        td= item.weight
+        td= item.quantity
+        td= item.msrp
+        td= item.percentOff
+        td= item.cost()
+    form(method='post', action='/items/#{item._id}')
+      input(type='hidden', name='_method', value='delete') 
         button Delete Item
 
 

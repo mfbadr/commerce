@@ -1,0 +1,17 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    title Add an Item
+    link(rel="stylesheet" href='/css/style.css')
+  body
+    .header
+      h1 Inventory Manager
+      nav
+        ul
+          li: a(href="/") Home
+          li: a(href="/faq") FAQ
+          li: a(href="/about") About
+          li: a(href='/items/new') Add Item
+          li: a(href='/items') View Items
+  block content
