@@ -21,7 +21,7 @@ block content
         td= item.percentOff
         td= item.cost()
     form(method='post', action='/items/#{item._id}')
-      input(type='hidden', name='_method', value='delete') 
+      input(type='hidden', name='_method', value='delete')
         button Delete Item
 
 
