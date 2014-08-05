@@ -3,12 +3,17 @@ html
   head
     meta(charset = 'utf-8')
     title Commerce
+    link(rel="stylesheet" href='/css/style.css')
   body
-    nav
-      ul
-        li: a(href="/") Home
-        li: a(href="/faq") FAQ
-        li: a(href="/about") About
-        li: a(href='/items/new') Add Item
-        li: a(href='/items') View Item
-    h1 This is home
+    .header
+      h1 Inventory Manager
+      h2 Home
+      nav
+        ul
+          li: a(href="/") Home
+          li: a(href="/faq") FAQ
+          li: a(href="/about") About
+          li: a(href='/items/new') Add Item
+          li: a(href='/items') View Items
+    .index
+      p Welcome to Mikey's inventory manager!

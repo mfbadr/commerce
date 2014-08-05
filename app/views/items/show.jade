@@ -5,13 +5,16 @@ html
     title View an Item
     link(rel='stylesheet' href='/css/style.css')
   body(style="background-color:#{item.color}")
-    nav
-      ul
-        li: a(href="/") Home
-        li: a(href="/faq") FAQ
-        li: a(href="/about") About
-        li: a(href='/items/new') Add Item
-        li: a(href='/items') View Items
+    .header
+      h1 Inventory Manager
+      h2= item.name
+      nav
+        ul
+          li: a(href="/") Home
+          li: a(href="/faq") FAQ
+          li: a(href="/about") About
+          li: a(href='/items/new') Add Item
+          li: a(href='/items') View Items
     .show
       table
         tr
@@ -23,12 +26,14 @@ html
           th % off
           th cost
         tr(style="background-color:#{item.color}")
-          td
-            a(href='/items/#{item._id}') #{item.name}
+          td= item.name
           td= item.dimensions.l + 'x' + item.dimensions.w + 'x' + item.dimensions.h
           td= item.weight
           td= item.quantity
           td= item.msrp
           td= item.percentOff
           td= item.cost()
+      form(method='post', action='/items/#{item._id}')
+        button Delete Item
+
 

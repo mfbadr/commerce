@@ -5,13 +5,16 @@ html
     title Add an Item
     link(rel="stylesheet" href='/css/style.css')
   body
-    nav
-      ul
-        li: a(href="/") Home
-        li: a(href="/faq") FAQ
-        li: a(href="/about") About
-        li: a(href='/items/new') Add Item
-        li: a(href='/items') View Items
+    .header
+      h1 Inventory Manager
+      h2 Your inventory
+      nav
+        ul
+          li: a(href="/") Home
+          li: a(href="/faq") FAQ
+          li: a(href="/about") About
+          li: a(href='/items/new') Add Item
+          li: a(href='/items') View Items
     .itemstable
       table
         tr

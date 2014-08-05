@@ -3,23 +3,36 @@ html
   head
     meta(charset='utf-8')
     title Add an Item
+    link(rel="stylesheet" href='/css/style.css')
   body
-    nav
-      ul
-        li: a(href="/") Home
-        li: a(href="/faq") FAQ
-        li: a(href="/about") About
-        li: a(href='/items/new') Add Item
-        li: a(href='/items') View Items
+    .header
+      h1 Inventory Manager
+      h2 Add an item
+      nav
+        ul
+          li: a(href="/") Home
+          li: a(href="/faq") FAQ
+          li: a(href="/about") About
+          li: a(href='/items/new') Add Item
+          li: a(href='/items') View Items
    form(method='post', action='/items')
+    label Name:
     input(name='name', type='text', placeholder='iPad', autofocus=true)
+    label Length:
     input(name='dimensions[l]', type='number', placeholder='length')
+    label Width:
     input(name='dimensions[w]', type='number', placeholder='width')
+    label Height:
     input(name='dimensions[h]', type='number', placeholder='height')
+    label Weight:
     input(name='weight', type='number', placeholder='weight')
+    label Color:
     input(name='color', type='color', placeholder='red')
+    label Quantity:
     input(name='quantity', type='number', placeholder='quantity')
+    label MSRP:
     input(name='msrp', type='number', placeholder='msrp')
+    label % Off:
     input(name='percentOff', type='number', placeholder='percentOff')
     button Add Item
 

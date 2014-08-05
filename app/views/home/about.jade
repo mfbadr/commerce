@@ -3,12 +3,22 @@ html
   head
     meta(charset = 'utf-8')
     title Commerce
+    link(rel="stylesheet" href='/css/style.css')
   body
-    nav
-      ul
-        li: a(href="/") Home
-        li: a(href="/faq") FAQ
-        li: a(href="/about") About
-        li: a(href='/items/new') Add Item
-        li: a(href='/items') View Items
-    h1 This is about
+    .header
+      h1 Inventory Manager
+      h2 About
+      nav
+        ul
+          li: a(href="/") Home
+          li: a(href="/faq") FAQ
+          li: a(href="/about") About
+          li: a(href='/items/new') Add Item
+          li: a(href='/items') View Items
+    .about
+      p How to use this site
+        ol
+          li Add items to your inventory
+          li View items in your inventory
+          li Click an item's name to view it or delete it
+
